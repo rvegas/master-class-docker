@@ -12,3 +12,16 @@ services:
     build: mongo-seed
     links:
       - mongodb
+  elastic:
+    image: elasticsearch:6
+    ports:
+      - "9200:9200"
+  elastic-seed:
+    build: elastic-seed
+    links:
+      - elastic
+  kibana:
+    image: kibana:6
+    ports:
+      - "5601:5601"
+

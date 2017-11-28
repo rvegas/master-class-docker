@@ -13,7 +13,8 @@ https://www.getpostman.com/
 https://fastoredis.com/anonim_users_downloads/
 
 - Run:
-
+```
+cd master-class-docker/session_2
 docker-compose build
 docker-compose up
-
+```

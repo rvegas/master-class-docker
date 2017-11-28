@@ -3,7 +3,7 @@ FROM ubuntu
 RUN apt-get update && apt-get install -y curl
 COPY ./init.json /init.json
 
-CMD curl -XPUT 'elastic:9200/shakespeare?pretty' -H 'Content-Type: application/json' -d'\
+CMD curl -XPUT 'elasticsearch:9200/shakespeare?pretty' -H 'Content-Type: application/json' -d'\
 {\
  "mappings": {\
   "doc": {\
@@ -18,4 +18,4 @@ CMD curl -XPUT 'elastic:9200/shakespeare?pretty' -H 'Content-Type: application/j
 }\
 '
 
-CMD curl -H 'Content-Type: application/x-ndjson' -XPOST 'elastic:9200/shakespeare/doc/_bulk?pretty' --data-binary @init.json
+CMD curl -H 'Content-Type: application/x-ndjson' -XPOST 'elasticsearch:9200/shakespeare/doc/_bulk?pretty' --data-binary @init.json

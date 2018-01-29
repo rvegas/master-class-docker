@@ -27,7 +27,7 @@ db.heroes.find({})
 
 Añadir Columna
 db.heroes.update(
-	{"name": “Drow_Ranger”}, 
+	{"name": "Drow_Ranger"}, 
         {$set : {"items": [] }},
         {upsert:false, multi:true}
 )
@@ -40,14 +40,14 @@ db.heroes.update(
 db.heroes.update({"name": "Drow_Ranger"}, {$push: {items: db.items.findOne()}})
 
 Ver datos de héroe con nuevo item:
-db.heroes.find({"name": “Drow_Ranger”})
+db.heroes.find({"name": "Drow_Ranger"})
 
 Cambiar el nombre de un item: Oh F*ck!
 db.items.update({"name": "Magic_Wand"}, {$set: {"name": “Ultra Magic Wand"}})
 db.heroes.update(
     {"items": 
            {$elemMatch: {"name": "Magic_Wand"}}}, 
-           {$set: {"items.$.name": “Ultra Magic Wand"}}
+           {$set: {"items.$.name": "Ultra Magic Wand"}}
            )
 
 Borrar datos:
@@ -89,7 +89,7 @@ CREATE TABLE quests(
    description         CHAR(250) NOT NULL,
    exp         INT      NOT NULL
 );
-INSERT INTO quests (name, description, exp) VALUES (“find sword”, “Find the hidden sword”, 500);
+INSERT INTO quests (name, description, exp) VALUES ('find sword', 'Find the hidden sword', 500);
 
 
 Joins:
@@ -125,7 +125,7 @@ Ver datos de heroes con nuevo item:
 SELECT * FROM heroes LEFT JOIN heroes_items ON heroes.id = heroes_items.hero_id LEFT JOIN items ON heroes_items.id = items.id WHERE heroes.id = 23;
 
 Cambiar el nombre de item:
-UPDATE items SET name = ‘mega sword’ WHERE id = 26;
+UPDATE items SET name = 'mega sword' WHERE id = 26;
 
 Borrar un item:
 DELETE FROM items WHERE id = 26;

@@ -1,26 +1,26 @@
 version: "2.1"
 services:
-  elasticsearch:
-    image: elasticsearch:5.6.4
-    ports:
-      - "9200:9200"
-    healthcheck:
-      test: "exit 0"
-  elastic-seed:
-    build: elastic-seed
-    links:
-      - elasticsearch
-    depends_on:
-      elasticsearch:
-        condition: service_healthy
-  kibana:
-    image: kibana:5.6.4
-    links:
-      - elasticsearch
-    depends_on:
-      - elasticsearch
-    ports:
-      - "5601:5601"
+#  elasticsearch:
+#    image: elasticsearch:5.6.4
+#    ports:
+#      - "9200:9200"
+#    healthcheck:
+#      test: "exit 0"
+#  elastic-seed:
+#    build: elastic-seed
+#    links:
+#      - elasticsearch
+#    depends_on:
+#      elasticsearch:
+#        condition: service_healthy
+#  kibana:
+#    image: kibana:5.6.4
+#    links:
+#      - elasticsearch
+#    depends_on:
+#      - elasticsearch
+#    ports:
+#      - "5601:5601"
   redis:
     image: redis
     ports:
